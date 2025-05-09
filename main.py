@@ -2,7 +2,7 @@ import math
 
 import pandas as pd
 import geopandas
-import geodatasets
+# import geodatasets
 from shapely.geometry import box
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -28,18 +28,26 @@ entry = tk.Entry(window, width=30)
 entry.pack()
 
 # Lista wybranych miast
-lista_miast = tk.Label(window, text="Wybrane miasta: brak", wraplength=300)
-lista_miast.pack()
+#lista_miast = tk.Label(window, text="Wybrane miasta: brak", wraplength=300)
+#lista_miast.pack()
+
+
+ilosc_miast = tk.Label(window, text="Liczba miast: " + "0 / 1024", wraplength=300)
+ilosc_miast.pack()
 
 # --- Tworzenie figury i canvasu tylko raz ---
-fig, ax = plt.subplots(figsize=(5, 5))
+fig, ax = plt.subplots(figsize=(7, 7))
 canvas = FigureCanvasTkAgg(fig, master=window)
 polska.clip(clip).plot(ax=ax, color="white", edgecolor="black")
 canvas.get_tk_widget().pack()
-#plt.show()
+
+
+# plt.show()
 # --- Główna funkcja rysująca mapę ---
 def pokaz_miasto():
     global df2
+    global ilosc
+    #ilosc = 0
     miasto = entry.get().strip().lower()  # konwersja do małych liter
 
     # porównanie z kolumną 'miasto', też w małych literach
@@ -54,20 +62,24 @@ def pokaz_miasto():
         gdf = geopandas.GeoDataFrame(
             df2, geometry=geopandas.points_from_xy(df2['dlug'], df2['szer']), crs="EPSG:4326"
         )
-        gdf.plot(ax=ax, color="red",markersize=gdf['ludnosc'] / 2000)
+
+        gdf.plot(ax=ax, color="red", markersize=gdf['ludnosc'] / 2000)
         ax.set_title("Wybrane miasta")
 
         canvas.draw()
-        lista_miast.config(text="Wybrane miasta: " + ", ".join(df2['miasto'].unique()))
+
+        #lista_miast.config(text="Wybrane miasta: " + ", ".join(df2['miasto'].unique()))
+        ilosc_miast.config(text="Ilość miast: " + str(len(df2)) + " / 1011")
         entry.delete(0, tk.END)
+
     else:
         messagebox.showerror("Błąd", f"Miasto '{miasto.title()}' nie znaleziono w danych.")
 
+
 # --- Obsługa Entera (przekazuje event, więc trzeba osobną funkcję lub wrapper) ---
+
 def pokaz_miasto_enter(event):
     pokaz_miasto()
-
-
 
 
 # Przycisk
@@ -75,6 +87,8 @@ tk.Button(window, text="Pokaż na mapie", command=pokaz_miasto).pack(pady=5)
 
 # Obsługa klawisza Enter
 window.bind("<Return>", pokaz_miasto_enter)
-
+width = window.winfo_screenwidth()
+height = window.winfo_screenheight()
+window.geometry("%dx%d" % (width, height))
 # Start GUI
 window.mainloop()
