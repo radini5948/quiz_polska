@@ -66,8 +66,8 @@ def start_main_app():
         width=30,
         height=2
     ).place(x=800, y=100 + len(przyciski_danych) * 75)
-    tk.Button(window, text="Powrót do ekranu logowania", command=powrot_do_logowania, bg="red", width=40, height=2, padx=10, pady=5).place(
+    tk.Button(window, text="Powrót do ekranu logowania", command=powrot_do_logowania, bg="red", width=43, height=2, padx=10, pady=5).place(
         x=800, y=775)
-    tk.Button(window, text="Wyjście", command=window.destroy, bg="red", width=40, height=2, padx=10, pady=5).place(
+    tk.Button(window, text="Wyjście", command=window.destroy, bg="red", width=43, height=2, padx=10, pady=5).place(
         x=800, y=850)
     window.mainloop()
