@@ -9,11 +9,11 @@ from tkinter import ttk
 
 def connect_db():
     return psycopg2.connect(
-        dbname="quiz_users",
-        user="postgres",
-        password="Siwonioskie_69",
-        host="localhost",
-        port="5432"
+        dbname="**********",
+        user="********",
+        password="*********",
+        host="*****",
+        port="****"
     )
 
 
