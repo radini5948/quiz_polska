@@ -1,0 +1,9 @@
+﻿country,shape,province,title
+Turkey,turkey/TUR_adm1.shp,NAME_1,Wszystkie prowincje Turcji
+Ron,quiz_ron/a__1619_rp_wojewodztwa.shp,woj,Wszystkie województwa I RP w 1619 roku
+Wojewodztwa,wojewodztwa/wojewodztwa.shp,JPT_NAZWA_,Wszystkie województwa w Polsce
+Gminy,gminy/gminy.shp,JPT_NAZWA_,Wszystkie gminy w Polsce
+Italy,italy/it.shp,name,Wszystkie prowincje Włoch
+Usa,usa/usa.shp,NAME,Wszystkie stany USA
+Indie,indie/indie.shp,State_Name,Wszystkie stany Indii
+Brazylia,Brazylia/BR_UF_2020.shp,NM_UF,Wszystkie stany Brazylii
