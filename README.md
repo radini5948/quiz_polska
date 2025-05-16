@@ -1,4 +1,5 @@
 Projekt prostej aplikacji quizowej mającej połączenie z bazą danych napisanej z użyciem bibliotek: tkinter, pandas, geopandas i matplotlib.
+Projekt cały czas jest rozwijany i planowane jest dodawanie nowych funkcjonalności.
 Po odpaleniu aplikacji dostajemy prosty ekran logowania (połączony z bazą danych zawierającą login i hasło użytkownika)
 
 ![image](https://github.com/user-attachments/assets/694000b5-065d-4396-967d-3eba09e32e56)
